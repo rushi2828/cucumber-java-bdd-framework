@@ -1,15 +1,16 @@
 # This is feature file.
 
-Feature: Login Association
+Feature: Login to saucedemo website 
 
-Scenario Outline: Login test
+Background:
+Given User is on saucedemo page https://www.saucedemo.com/
 
-Given user is on login page
-When Title is login page
-Then user enters login credentials "<username>" and "<pass>"
-Then click login button
-Then closed browser
+@ValidCredentials
+Scenario: Login with valid credentials 
+
+When user enters login credentials "standard_user" and "secret_sauce"
+Then User should be able to login succesfully 
 
 Examples:
 	| username  | pass |
-	| testdata	| testdata |	
+	| standard_user	| secret_sauce |	
